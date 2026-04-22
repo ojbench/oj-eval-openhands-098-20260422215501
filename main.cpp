@@ -14,6 +14,13 @@ void insert_bst(Node*& root, long long v){
     else insert_bst(root->right, v);
 }
 
+void destroy(Node* root){
+    if(!root) return;
+    destroy(root->left);
+    destroy(root->right);
+    delete root;
+}
+
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -37,5 +44,6 @@ int main(){
     };
     rev_in(root);
     if(ans != -1) cout << ans << '\n';
+    destroy(root);
     return 0;
 }
